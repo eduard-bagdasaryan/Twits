@@ -1,0 +1,60 @@
+<h1>Statistics</h1>
+
+<div>
+    <%= form_tag '', :method => :get do %>
+        <%= radio_button_tag(:date, "all", params[:date] == 'all' || params[:date] == nil) %>
+        <%= label_tag(:lbl, "all") %>
+        <%= radio_button_tag(:date, "today", params[:date] == 'today') %>
+        <%= label_tag(:lbl, "today") %>
+        <%= radio_button_tag(:date, "this_week", params[:date] == 'this_week') %>
+        <%= label_tag(:lbl, "this week") %>
+        <p><%= submit_tag 'Apply' %></p>
+    <% end %>
+</div>
+
+<div>
+    <table>
+        <tr bgcolor="#81BEF7">
+            <th>User</th>
+            <th>Votes</th>
+        </tr>
+        <% @top_rated.each do |user| %>
+            <tr>
+            <td><%= user.user_name %></td>
+            <td><%= user.total_vote %></td>
+        </tr>
+    <% end %>
+    </table>
+</div>
+
+<div>
+    <table>
+        <tr bgcolor="#81BEF7">
+            <th>User</th>
+            <th>Posts</th>
+        </tr>
+        <% @top_posters.each do |user| %>
+            <tr>
+            <td><%= user.user_name %></td>
+            <td><%= user.posts_count %></td>
+        </tr>
+    <% end %>
+    </table>
+</div>
+
+<div>
+    <table>
+        <tr bgcolor="#81BEF7">
+            <th>User</th>
+            <th>Message</th>
+            <th>Votes</th>
+        </tr>
+        <% @top_posts.each do |post| %>
+        <tr>
+            <td><%= post.user_name %></td>
+            <td><%= post.message %></td>
+            <td><%= post.votes %></td>
+        </tr>
+    <% end %>
+    </table>
+</div>

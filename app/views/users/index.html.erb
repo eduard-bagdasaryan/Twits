@@ -1,0 +1,19 @@
+<h1>Users</h1>
+ 
+<table>
+    <tr bgcolor="#81BEF7">
+    <th>Name</th>
+    <th>Token</th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.token %></td>
+      <td><%= link_to 'delete', user_path(user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

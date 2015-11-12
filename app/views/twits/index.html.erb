@@ -1,0 +1,20 @@
+<h1>Twits</h1>
+<div>
+    <table>
+        <tr bgcolor="#81BEF7">
+            <th>User</th>
+            <th>Message</th>
+            <th>Votes</th>
+        </tr>
+        <% @twits.each do |twit| %>
+            <tr>
+            <td><%= twit.name %></td>
+            <td><%= twit.message %></td>
+            <td><%= twit.vote %></td>
+            <td><%= link_to 'delete', twit_path(twit),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </table>
+</div>
