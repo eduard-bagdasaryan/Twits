@@ -8,14 +8,13 @@ class TwitsController < ApplicationController
     def create
         @user = User.where(token: @token).first
         @twit = @user.twits.create(twit_params)
-        @twit.vote = 0
         @twit.save
         redirect_to twits_path
     end
 
     def update
         @twit = Twit.find(params[:id])
-        @twit.update_attribute(:vote, @twit.vote + 1)
+        @twit.increment!(:vote)
         redirect_to twits_path
     end
 

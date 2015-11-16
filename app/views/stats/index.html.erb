@@ -20,8 +20,8 @@
         </tr>
         <% @top_rated.each do |user| %>
             <tr>
-            <td><%= user.user_name %></td>
-            <td><%= user.total_vote %></td>
+            <td><%= user[0] %></td>
+            <td><%= user[1] %></td>
         </tr>
     <% end %>
     </table>
@@ -35,8 +35,8 @@
         </tr>
         <% @top_posters.each do |user| %>
             <tr>
-            <td><%= user.user_name %></td>
-            <td><%= user.posts_count %></td>
+            <td><%= user[0] %></td>
+            <td><%= user[1] %></td>
         </tr>
     <% end %>
     </table>
@@ -53,7 +53,7 @@
         <tr>
             <td><%= post.user_name %></td>
             <td><%= post.message %></td>
-            <td><%= post.votes %></td>
+            <td><%= post.votes%></td>
         </tr>
     <% end %>
     </table>
