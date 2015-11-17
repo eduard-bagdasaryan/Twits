@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
- # get 'stats/index'
 
-  resources :stats
-  resources :twits
-  resources :users
+  resources :stats, only: :index
+  resources :twits, only: [:index, :create, :update, :destroy], path_names: { create: 'api_create', update: 'api_update' }
+  resources :users, only: [:index, :new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

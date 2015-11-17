@@ -1,0 +1,8 @@
+<tr>
+    <td><%= twit.name %></td>
+    <td><%= twit.message %></td>
+    <td><%= twit.vote %></td>
+    <td><%= link_to 'delete', twit_path(twit),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+</tr>

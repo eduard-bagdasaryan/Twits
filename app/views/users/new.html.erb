@@ -1,5 +1,19 @@
-<%= form_for :user, url: users_path do |f| %>
+<%= form_for @user do |f| %>
+ <% if @user.errors.any? %>
+    <div>
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this user from being saved:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+  <div>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -8,5 +22,6 @@
   <p>
     <%= f.submit %>
   </p>
+  </div>
 
 <% end %>

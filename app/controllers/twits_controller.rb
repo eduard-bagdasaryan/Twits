@@ -1,12 +1,10 @@
-class TwitsController < ApplicationController
-    before_action :authenticate, except: [ :index, :destroy]
+class TwitsController < CommonController
 
     def index
-        @twits = Twit.joins(:user).select('users.name, twits.*')
+        @twits = Twit.twits_all 
     end
 
     def create
-        @user = User.where(token: @token).first
         @twit = @user.twits.create(twit_params)
         @twit.save
         redirect_to twits_path
@@ -30,14 +28,4 @@ class TwitsController < ApplicationController
         params.require(:twit).permit(:message, :string)
     end
 
-    def authenticate
-        authenticate_or_request_with_http_token do |token, options|
-            User.find_by(token: token)
-            @token = token;
-        end
-    end
-
-    private
-
-    @token = '';
 end
