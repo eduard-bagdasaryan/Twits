@@ -1,0 +1,19 @@
+# This is the configuration used to check the rubocop source code.
+
+inherit_from: ./.rubocop_todo.yml
+
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'test/**/*'
+    - 'db/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'config.ru'
+
+Style/Encoding:
+  Enabled: true
